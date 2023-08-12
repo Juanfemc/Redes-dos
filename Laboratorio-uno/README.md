@@ -62,3 +62,5 @@ Por lo tanto, en la subred 172.16.0.0/22, con 10 bits para la porción de host, 
 En la actualidad, el concepto de "clases" de direcciones IP se ha vuelto menos relevante debido a la adopción de la notación de máscara de subred variable (VLSM) y al agotamiento de direcciones IPv4. Sin embargo, para responder a tu pregunta:
 
 La dirección IP 10.10.10.0/24 pertenece al rango privado de direcciones IP clase A. 
+
+## [Caracterización de los adaptadores ✔](#)
