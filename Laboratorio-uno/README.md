@@ -64,3 +64,53 @@ En la actualidad, el concepto de "clases" de direcciones IP se ha vuelto menos r
 La dirección IP 10.10.10.0/24 pertenece al rango privado de direcciones IP clase A. 
 
 ## [Caracterización de los adaptadores ✔](#)
+
+|Parámetro||Valor|
+|--|:--:|--:|
+|Número de adaptadores Físicos|-->|2|
+|Número de adaptadores Virtuales|-->|5|
+|Tipo de Adaptador principal|-->|Wi-fi|
+|Fabricante del Adaptador principal|-->|Realtek Semiconductor Corp.|
+|Código MAC del fabricante|-->|20-2B-20|
+|MAC|-->|20-2B-20-A7-D0-A1|
+
+## [Caracterización de la red ✔](#) 
+|Parámetro|Valor|
+|--|--:|
+|__Subnet__|192.168.1.0/24|
+|IPv4|192.168.1.12|
+|Subnet Mask decimal|24|
+|Subnet Mask octetos|255.255.255.0|
+|Número de direcciones de Host|254|
+|Rango de direcciones de Host|192.168.1.1-254|
+|IP Broadcast|192.168.1.255|
+|Server DHCP|192.168.1.254|
+|Server DNS|8.8.8.8|
+
+## [Caracterización de la puerta de enlace ✔](#) 
+|Parámetro|Valor|
+|--|--:|
+|Número de Entradas en la tabla ARP |11|
+|IPv4 Gateway|192.168.1.1|
+|MAC Gateway|80-78-71-04-50-b5|
+|ISP|COLOMBIA TELECOMUNICACIONES S.A. ESP|
+|[IP Publica][5]|186.99.203.121|
+
+## [Retardo de la red ✔](#) 
+|Servidor|IP|Tiempo promedio/ms|
+|--|--|--|
+|DNS Google|8.8.8.8|49|
+|DNS Cloudflare|1.1.1.1|118|
+|OpenDNS|208.67.222.222|113|
+|Alternate DNS|76.76.19.19|43|
+|DNS Quad9|9.9.9.9|60|
+|AdGuard DNS|94.140.14.14|178|
+
+
+## [Capacidad del canal ✔](#) 
+|Servidor|Ping/ms|Down/MB|Up/MB|
+|--|:--:|--:|--:|
+|[speed test][1]|73|2.60|0.81|
+|[Netflix][2]||2.9|3.1|
+|[Claro][3]|44|2.3|0.9|
+|[nperf][4]|48.7|2.79|0.8|
