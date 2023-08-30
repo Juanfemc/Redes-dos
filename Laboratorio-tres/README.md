@@ -221,8 +221,53 @@ Configuración de direcciones IP:
 /ip route add dst-address=0.0.0.0/0
 `
 
+## 3. [Configurar enrutamiento MikroTik ✔](#)
+
+## Agregar las rutas estáticas necesarias para que los tres router conozcan la ruta a los otros dos.
+
+Si deseas configurar rutas estáticas en tres enrutadores para que conozcan la ruta entre ellos, debes configurar las rutas apropiadas en cada uno. Supongamos que tienes tres enrutadores: R1, R2 y R3, y deseas que cada enrutador conozca cómo llegar a los otros dos. Aquí tienes los pasos para hacerlo:
+
+#### Ruta a R2
+`
+/ip route add dst-address=192.168.2.0/24 gateway=IP_de_R2
+`
+
+
+#### Ruta a R3:
+`
+/ip route add dst-address=192.168.3.0/24 gateway=IP_de_R3
+`
+
+## Realizar pruebas de diagnostico PING y TRACEROUTE desde el router a los otros router.
 
 
 
+- Utiliza el comando PING seguido de la dirección IP del enrutador de destino:
+
+`
+/ping IP_del_enrutador_destino
+`
 
 
+- Utiliza el comando TRACEROUTE seguido de la dirección IP del enrutador de destino:
+
+`
+/tool traceroute IP_del_enrutador_destino
+`
+
+
+## Realizar un backup de la configuración del equipo.
+
+En la interfaz de administración, sigue estos pasos para realizar una copia de seguridad de la configuración:
+
+a. Haz clic en la pestaña "Files" en el lado izquierdo.
+
+b. En la ventana "Files", verás una lista de archivos y carpetas en el sistema de archivos del enrutador.
+
+c. Haz clic en el botón "Backup" en la parte superior de la ventana. Esto abrirá una nueva ventana para configurar la copia de seguridad.
+
+d. En la ventana de configuración de copia de seguridad, puedes seleccionar las opciones que desees. Por lo general, es recomendable marcar las casillas para "Include Password" y "Include User Database" para asegurarte de que las contraseñas y la base de datos de usuarios se incluyan en la copia de seguridad.
+
+e. Ingresa un nombre para el archivo de copia de seguridad en el campo "File name." Por ejemplo, "backup_agosto_2023.backup".
+
+f. Finalmente, haz clic en el botón "Backup" para crear la copia de seguridad. El enrutador generará un archivo de copia de seguridad que se guardará en el sistema de archivos.
