@@ -131,3 +131,65 @@ Ventajas: Proporciona direcciones IP consistentes para dispositivos específicos
 
 Desventajas: Si se reserva un número excesivo de direcciones IP, puede agotar el rango disponible para otros dispositivos.
 
+## 1. [Configuración básica MikroTik-01 ](#)
+
+Algunos pasos nos los obviamos porque ya lo explicamos en las anteriores documentaciones!
+
+en este caso trabajamos en la configuración montada durante la practica anterior:
+
+## Agregar la dirección del bridge (interna) con una IP 192.168.11.1 privada, clase C.
+
+`
+/ip address add address=192.168.11.1/24 interface=Nombre_del_Bridge
+`
+
+
+## Agregar un Pool en el segmento de la LAN que asigne direcciones entre 192.168.11.100-192.168.11.200.
+
+En la consola, utiliza el siguiente comando para crear un pool de direcciones IP:
+
+`
+/ip pool add name=Nombre_del_Pool ranges=192.168.11.100-192.168.11.200
+`
+
+A continuación, asocia el pool de direcciones IP con la interfaz del bridge utilizando el siguiente comando:
+
+`
+/ip dhcp-server add name=DHCP_LAN interface=Nombre_del_Bridge address-pool=Nombre_del_Pool disabled=no
+`
+
+## Convertir a estático el arrendamiento DHCP para la MAC del PC de configuración.
+
+Asegúrate de conocer la dirección MAC del PC de configuración para el que deseas establecer una dirección IP estática.
+
+En la CLI, utiliza el siguiente comando para convertir el arrendamiento DHCP a una dirección IP estática para la dirección MAC del PC:
+
+`
+/ip dhcp-server lease make-static [find mac-address=00:11:22:33:44:55]
+`
+
+_Reemplaza "00:11:22:33:44:55" con la dirección MAC real del PC._
+
+## Cambiar la ip estática del pc de configuración a 192.168.11.10.
+
+
+Para cambiar la dirección IP estática de un PC de configuración a 192.168.11.10 en MikroTik Winbox a través de la consola, sigue estos pasos:
+
+`
+/ip address add address=192.168.11.10/24 interface=Nombre_de_Tu_Interfaz
+`
+_Recuerda que la dirección IP que elijas (192.168.11.10) debe estar dentro del rango de direcciones permitido para la red LAN y no debe entrar en conflicto con otras direcciones IP en la red._
+
+#### Crear una regla source NAT en el cortafuegos para enmascarar la ip de origen.
+
+`
+/ip firewall nat add chain=srcnat out-interface=Nombre_de_Tu_Interfaz action=masquerade
+`
+
+_Reemplazar "Nombre_de_Tu_Interfaz" con el nombre de la interfaz de salida hacia Internet (por ejemplo, "ether1" o la interfaz correspondiente)._
+
+Si deseas aplicar la regla solo a direcciones IP específicas, puedes agregar más detalles al comando. Por ejemplo:
+
+`
+/ip firewall nat add chain=srcnat out-interface=Nombre_de_Tu_Interfaz action=masquerade src-address=192.168.11.0/24
+`
